@@ -1,28 +1,28 @@
 package calculator;
 
 public class CalculatorImpl implements CalculatorService {
-	 public double add(double a, double b) {
-	       return a+ b;
+	 public double add(CalculatorDTO calculatorDTO) {
+	       return (calculatorDTO.getNumber1() + calculatorDTO.getNumber2());
 	   }
-	 public double min(double a, double b)  {
-	       return a- b;
+	 public double min(CalculatorDTO calculatorDTO)  {
+	       return (calculatorDTO.getNumber1() - calculatorDTO.getNumber2());
 	   }
-	 public double divide(double a, double b) {
-	       return a/ b;
+	 public double divide(CalculatorDTO calculatorDTO) {
+	       return (calculatorDTO.getNumber1() / calculatorDTO.getNumber2());
 	   }
-	 public double multi(double a, double b) {
-	       return a* b;
+	 public double multi(CalculatorDTO calculatorDTO) {
+	       return (calculatorDTO.getNumber1() * calculatorDTO.getNumber2());
 	   }
-	 public double log(double a) {
-	       return Math.log(a);
+	 public double log(CalculatorDTO calculatorDTO) {
+	       return Math.log(calculatorDTO.getNumber1());
 	   }
-	 public double cos(double a) {
-	       return Math.cos(a);
+	 public double cos(CalculatorDTO calculatorDTO) {
+	       return Math.cos(calculatorDTO.getNumber1());
 	   }
-	 public double sin(double a) {
-	       return Math.sin(a);
+	 public double sin(CalculatorDTO calculatorDTO) {
+	       return Math.sin(calculatorDTO.getNumber1());
 	   }
-	 public double tan(double a) {
-	       return Math.tan(a);
+	 public double tan(CalculatorDTO calculatorDTO) {
+	       return Math.tan(calculatorDTO.getNumber1());
 	   }
 }
