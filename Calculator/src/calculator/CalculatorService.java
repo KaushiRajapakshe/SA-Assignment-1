@@ -1,6 +1,6 @@
 package calculator;
 
-public interface CalculatorService {
+public interface CalculatorService extends IService{
 	public double add(CalculatorDTO calculatorDTO);
 	public double min(CalculatorDTO calculatorDTO);
 	public double divide(CalculatorDTO calculatorDTO);
