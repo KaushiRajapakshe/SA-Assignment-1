@@ -10,5 +10,6 @@ Import-Package: calculator,
  converterlength,
  convertermass,
  convertertemperature,
+ maths_quiz,
  org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy

@@ -10,17 +10,25 @@ import convertermass.ConverterMassDTO;
 import convertermass.IConverterMassService;
 import convertertemperature.ConverterTemperatureDTO;
 import convertertemperature.ConverterTemperatureService;
+import maths_quiz.EasyLevel;
+import maths_quiz.HardLevel;
+import maths_quiz.Level;
+import maths_quiz.QuizService;
 
 
 public class FrontController {
-	private final char plus = '+';
-	private final char min = '-';
-	private final char div = '/';
-	private final char multi = '*';
+	private final String plus = "+";
+	private final String min = "-";
+	private final String div = "/";
+	private final String multi = "*";
+	private final String log = "log";
+	private final String sin = "sin";
+	private final String cos = "cos";
+	private final String tan = "tan";
 	private double value;
 
 	Scanner sc = new Scanner(System.in);
-	public void actionCalculator(double no1, double no2, char character, CalculatorService iCalculatorService) {
+	public void actionCalculator(double no1, double no2, String character, CalculatorService iCalculatorService) {
 		CalculatorDTO calculatorDTO = new CalculatorDTO();
         calculatorDTO.setNo1(no1);
         calculatorDTO.setNo2(no2);
@@ -33,6 +41,14 @@ public class FrontController {
             System.out.println("Answer is : " + iCalculatorService.divide(calculatorDTO));
         }else if(multi == character) {
             System.out.println("Answer is : " + iCalculatorService.multi(calculatorDTO));
+        }else if(log == character) {
+            System.out.println("Answer is : " + iCalculatorService.log(calculatorDTO));
+        }else if(sin == character) {
+            System.out.println("Answer is : " + iCalculatorService.sin(calculatorDTO));
+        }else if(cos == character) {
+            System.out.println("Answer is : " + iCalculatorService.cos(calculatorDTO));
+        }else if(tan == character) {
+            System.out.println("Answer is : " + iCalculatorService.tan(calculatorDTO));
         }
 	}
 	
@@ -106,8 +122,28 @@ public class FrontController {
 		
 	}
 	
-	public void actionQuiz() {
-		
+	public void actionQuiz(int tool, QuizService quizService) {
+		int mode=0;
+        
+        System.out.print("Enter Your Mode :  ");
+        Scanner sc=new Scanner(System.in);
+        try{
+            mode=sc.nextInt();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        Level l=null;
+        
+        switch(mode){
+            case 1:
+                l=new EasyLevel();
+                break;
+            case 2:
+                l=new HardLevel();
+                break;
+        }
+    System.out.println("\n");
+    l.runLevel();
 	}
 
 	

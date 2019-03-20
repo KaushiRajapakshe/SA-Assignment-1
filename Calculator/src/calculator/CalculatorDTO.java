@@ -3,7 +3,7 @@ package calculator;
 public class CalculatorDTO {
 	private double no1;
 	private double no2;
-	private char character;
+	private String character;
 	
 	public void setNo1(double no1) {
 		this.no1 = no1;
@@ -13,7 +13,7 @@ public class CalculatorDTO {
 		this.no2 = no2;
 	}
 
-	public void setCharacter(char character) {
+	public void setCharacter(String character) {
 		this.character = character;
 	}
 	
@@ -25,7 +25,7 @@ public class CalculatorDTO {
 		return this.no2;
 	}
 	
-	public char getCharacter() {
+	public String getCharacter() {
 		return this.character;
 	}
 }

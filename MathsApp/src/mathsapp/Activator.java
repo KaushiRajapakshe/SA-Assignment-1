@@ -9,6 +9,7 @@ import calculator.CalculatorService;
 import converterlength.ConverterLengthService;
 import convertermass.IConverterMassService;
 import convertertemperature.ConverterTemperatureService;
+import maths_quiz.QuizService;
 
 public class Activator implements BundleActivator {
 	
@@ -16,6 +17,7 @@ public class Activator implements BundleActivator {
 	ServiceReference<IConverterMassService> mass;
 	ServiceReference<ConverterTemperatureService> temperature;
 	ServiceReference<ConverterLengthService> length;
+	ServiceReference<QuizService> quiz;
 	
 	private static BundleContext context;
 	private int tool;
@@ -23,7 +25,7 @@ public class Activator implements BundleActivator {
 	private int conType;
 	private double no1;
 	private double no2;
-	private char character;
+	private String character;
 
 	Scanner sc =new Scanner(System.in);
 	
@@ -53,7 +55,8 @@ public class Activator implements BundleActivator {
         ConverterLengthService converterLengthService = (ConverterLengthService) bundleContext.getService(length);
         temperature = bundleContext.getServiceReference(ConverterTemperatureService.class); 
         ConverterTemperatureService converterTemperatureService = (ConverterTemperatureService) bundleContext.getService(temperature);
-        
+        quiz = bundleContext.getServiceReference(QuizService.class); 
+        QuizService quizService = (QuizService) bundleContext.getService(quiz);
         if(tool==1) {
         	System.out.println("------Calculator------");
         	char a = 0;
@@ -63,7 +66,7 @@ public class Activator implements BundleActivator {
 		        System.out.print("No 1: ");
 		        no1 = sc.nextDouble();
 		        System.out.print("Operator : ");
-		        character=sc.next().charAt(0);
+		        character=sc.nextLine(); //charAt(0);
 		        System.out.print("No 2: ");
 		        no2=sc.nextDouble();
 		        
@@ -90,10 +93,17 @@ public class Activator implements BundleActivator {
         }
         else if(tool== 3) {
         	System.out.println("------Random Maths Quiz Generator------");
-//	        System.out.println(s2.quiz());
-        	
+        	System.out.println("\t -----------------------------------------------");
+            System.out.println("\t|\t\t\t\t\t\t|");
+            System.out.println("\t|\t\tWelcome Maths Quiz\t\t|");
+            System.out.println("\t|\t\t\t\t\t\t|");
+            System.out.println("\t|\t\t  Easy mode : 1\t\t\t|");
+            System.out.println("\t|\t\t  Hard mode : 2\t\t\t|");
+            System.out.println("\t|\t\t\t\t\t\t|");
+            System.out.println("\t -----------------------------------------------\n");
+        	tool = sc.nextInt();
         	FrontController frontController = new FrontController();
-	        frontController.actionQuiz();
+	        frontController.actionQuiz(tool, quizService);
         	// ToDo : implement the actionQuiz 
 	    }
 	}
