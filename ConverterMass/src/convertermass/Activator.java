@@ -8,9 +8,6 @@ public class Activator implements BundleActivator {
 
 	private static BundleContext context;
 
-	static BundleContext getContext() {
-		return context;
-	}
 
 	/*
 	 * (non-Javadoc)

@@ -190,7 +190,7 @@ public class HardLevel implements Level{
     public void level7() {
         System.out.print("07) ");
        String str;
-        String[] ca={"+","+"+"+"};
+        String[] ca={"+","+","+"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"+"+q[4]+"=");
         int an=0;
@@ -217,7 +217,7 @@ public class HardLevel implements Level{
     public void level8() {
         System.out.print("08) ");
        String str;
-        String[] ca={"+","+"+"-"};
+        String[] ca={"+","+","-"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"-"+q[4]+"=");
         int an=0;
@@ -244,7 +244,7 @@ public class HardLevel implements Level{
     public void level9() {
         System.out.print("09) ");
        String str;
-        String[] ca={"+","-"+"+"};
+        String[] ca={"+","-","+"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"-"+q[3]+"+"+q[4]+"=");
         int an=0;
@@ -271,7 +271,7 @@ public class HardLevel implements Level{
     public void level10() {
         System.out.print("10) ");
        String str;
-        String[] ca={"+","+"+"+"};
+        String[] ca={"+","+","+"};
         int[] q=ng.GetQuiz(1,1000, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"+"+q[4]+"=");
         int an=0;
@@ -298,7 +298,7 @@ public class HardLevel implements Level{
     public void level11() {
         System.out.print("11) ");
        String str;
-        String[] ca={"+","+"+"-"};
+        String[] ca={"+","+","-"};
         int[] q=ng.GetQuiz(1,1000, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"-"+q[4]+"=");
         int an=0;
@@ -325,7 +325,7 @@ public class HardLevel implements Level{
     public void level12() {
         System.out.print("12) ");
        String str;
-        String[] ca={"+","-"+"+"};
+        String[] ca={"+","-","+"};
         int[] q=ng.GetQuiz(1,1000, ca);
         System.out.print(q[1]+"+"+q[2]+"-"+q[3]+"+"+q[4]+"=");
         int an=0;
@@ -352,7 +352,7 @@ public class HardLevel implements Level{
     public void level13() {
         System.out.print("13) ");
        String str;
-        String[] ca={"+","+"+"*"};
+        String[] ca={"+","+","*"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"*"+q[4]+"=");
         int an=0;
@@ -379,7 +379,7 @@ public class HardLevel implements Level{
     public void level14() {
        System.out.print("14) ");
        String str;
-        String[] ca={"+","+"+"/"};
+        String[] ca={"+","+","/"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"/"+q[4]+"=");
         int an=0;
@@ -406,7 +406,7 @@ public class HardLevel implements Level{
     public void level15() {
         System.out.print("15) ");
        String str;
-        String[] ca={"+","+"+"+"+"+"};
+        String[] ca={"+","+","+","+"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"+"+q[4]+"+"+q[5]+"=");
         int an=0;
@@ -433,7 +433,7 @@ public class HardLevel implements Level{
     public void level16() {
         System.out.print("16) ");
        String str;
-        String[] ca={"+","-"+"+"+"+"};
+        String[] ca={"+","-","+","+"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"-"+q[3]+"+"+q[4]+"+"+q[5]+"=");
         int an=0;
@@ -460,7 +460,7 @@ public class HardLevel implements Level{
     public void level17() {
         System.out.print("17) ");
        String str;
-        String[] ca={"+","-"+"-"+"+"};
+        String[] ca={"+","-","-","+"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"-"+q[3]+"-"+q[4]+"+"+q[5]+"=");
         int an=0;
@@ -487,7 +487,7 @@ public class HardLevel implements Level{
     public void level18() {
        System.out.print("18) ");
        String str;
-        String[] ca={"+","-"+"-"+"-"};
+        String[] ca={"+","-","-","-"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"-"+q[3]+"-"+q[4]+"-"+q[5]+"=");
         int an=0;
@@ -514,7 +514,7 @@ public class HardLevel implements Level{
     public void level19() {
         System.out.print("19) ");
        String str;
-        String[] ca={"+","+"+"+"+"*"};
+        String[] ca={"+","+","+","*"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"+"+q[4]+"*"+q[5]+"=");
         int an=0;
@@ -541,7 +541,7 @@ public class HardLevel implements Level{
     public void level20() {
        System.out.print("20) ");
        String str;
-        String[] ca={"+","+"+"*"+"/"};
+        String[] ca={"+","+","*","/"};
         int[] q=ng.GetQuiz(1,100, ca);
         System.out.print(q[1]+"+"+q[2]+"+"+q[3]+"*"+q[4]+"/"+q[5]+"=");
         int an=0;

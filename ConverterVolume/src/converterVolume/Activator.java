@@ -1,19 +1,12 @@
-package converterVolume;
+package convertervolume;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator{
-	
-
-
-
-
+public class Activator implements BundleActivator {
 
 	private static BundleContext context;
 
-	static BundleContext getContext() {
-		return context;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -23,7 +16,7 @@ public class Activator implements BundleActivator{
 		Activator.context = bundleContext;
 		System.out.println("Start Volume Converter Publisher.");
 		ConvertVolumeService convertVolumeService = new ConvertVolumeImpl();
-		bundleContext.registerService(ConvertVolumeService.class, convertVolumeService, null);
+		bundleContext.registerService(ConvertVolumeService.class, convertVolumeService, null); 
 	}
 
 	/*
@@ -35,6 +28,4 @@ public class Activator implements BundleActivator{
 		System.out.println("Stop Volume Converter Publisher.");
 	}
 
-	}
-
-
+}

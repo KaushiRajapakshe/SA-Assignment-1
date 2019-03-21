@@ -5,7 +5,7 @@ public class CalculatorImpl implements CalculatorService{
 
 	@Override
 	public double add(CalculatorDTO calculatorDTO) {
-		if("+" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("+")) {
 			answer = calculatorDTO.getNumber1() + calculatorDTO.getNumber2();
 		}
 		return answer;
@@ -13,7 +13,7 @@ public class CalculatorImpl implements CalculatorService{
 
 	@Override
 	public double min(CalculatorDTO calculatorDTO) {
-		if("-" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("-")) {
 			answer = calculatorDTO.getNumber1() - calculatorDTO.getNumber2();
 		}
 		return answer;
@@ -21,7 +21,7 @@ public class CalculatorImpl implements CalculatorService{
 
 	@Override
 	public double divide(CalculatorDTO calculatorDTO) {
-		if("/" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("/")) {
 			answer = calculatorDTO.getNumber1() / calculatorDTO.getNumber2();
 		}
 		return answer;
@@ -29,7 +29,7 @@ public class CalculatorImpl implements CalculatorService{
 
 	@Override
 	public double multi(CalculatorDTO calculatorDTO) {
-		if("*" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("*")) {
 			answer = calculatorDTO.getNumber1() * calculatorDTO.getNumber2();
 		}
 		return answer;
@@ -37,7 +37,7 @@ public class CalculatorImpl implements CalculatorService{
 	
 	@Override
 	public double log(CalculatorDTO calculatorDTO){
-		if("log" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("log")) {
 			answer = Math.log(calculatorDTO.getNumber1());
 		}
 		return answer;
@@ -45,7 +45,7 @@ public class CalculatorImpl implements CalculatorService{
 	
 	@Override
 	public double sin(CalculatorDTO calculatorDTO){
-		if("sin" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("sin")) {
 			answer = Math.sin(calculatorDTO.getNumber1());
 		}
 		return answer;
@@ -53,7 +53,7 @@ public class CalculatorImpl implements CalculatorService{
 	
 	@Override
 	public double cos(CalculatorDTO calculatorDTO){
-		if("cos" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("cos")) {
 			answer = Math.cos(calculatorDTO.getNumber1());
 		}
 		return answer;
@@ -61,7 +61,7 @@ public class CalculatorImpl implements CalculatorService{
 	
 	@Override
 	public double tan(CalculatorDTO calculatorDTO){
-		if("tan" == calculatorDTO.getCharacter()) {
+		if(calculatorDTO.getCharacter().equals("tan")) {
 			answer = Math.tan(calculatorDTO.getNumber1());
 		}
 		return answer;

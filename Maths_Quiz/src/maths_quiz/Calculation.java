@@ -56,6 +56,7 @@ public class Calculation {
   public int[] Addition(int num) {
         int randomNum = 0;
         int gen[]=new int[2];
+    if(num!=0) {
         //while (randomNum == 0) {
         try {
             if(num==1){
@@ -76,6 +77,11 @@ public class Calculation {
         
         gen[0]=no1;
         gen[1]=no2;
+    }
+    else {
+    	gen[0]=0;
+        gen[1]=0;
+    }
         
         return gen;
 
@@ -84,6 +90,7 @@ public class Calculation {
     public int[] Subtraction(int num) {
         int randomNum = 0;
         int gen[]=new int[2];
+        if(num!=0) {
         //while (randomNum == 0) {
         try {
             if(num==1){
@@ -103,7 +110,11 @@ public class Calculation {
         no2 = num + no1;
         gen[0]=no2;
         gen[1]=no1;
-        
+        }
+        else {
+        	gen[0]=0;
+            gen[1]=0;
+        }
         return gen;
 
     }
@@ -111,6 +122,7 @@ public class Calculation {
     public int[] Multiplication(int num) {
         int randomNum = 0;
         int gen[]=new int[2];
+        if(num!=0) {
         //while (randomNum == 0) {
         int k=0;
         do{
@@ -140,7 +152,11 @@ public class Calculation {
         no2 = num / no1;
         gen[0]=no1;
         gen[1]=no2;
-        
+        }
+        else {
+        	gen[0]=0;
+            gen[1]=0;
+        }
         return gen;
 
     }
@@ -149,6 +165,7 @@ public class Calculation {
         int randomNum = 0;
         int gen[]=new int[2];
         int no1, no2;
+        if(num!=0) {
         //while (randomNum == 0) {
         int k=0;
         do{
@@ -179,7 +196,11 @@ public class Calculation {
         }while(no2>90);
         gen[0]=no2;
         gen[1]=no1;
-        
+        }
+        else {
+        	gen[0]=0;
+            gen[1]=0;
+        }
         return gen;
 
     }
