@@ -1,5 +1,6 @@
 package mathsapp;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import calculator.CalculatorDTO;
@@ -22,7 +23,8 @@ public class FrontController {
 	
 	private double value;
 	private String a;
-
+	DecimalFormat df = new DecimalFormat("####.####");
+	
 	Scanner sc = new Scanner(System.in);
 	public void actionCalculator(CalculatorService iCalculatorService) {
 	        
@@ -30,39 +32,43 @@ public class FrontController {
 	        	 
 		        
 		        CalculatorDTO calculatorDTO = new CalculatorDTO();
-		        System.out.println("---------------------------------------------------");
-		        System.out.println(" 	+  , -  , /  , *  , log , sin , tan , quit");
-		        System.out.println("---------------------------------------------------");
+		        System.out.println("-----------------------------------------------------");
+		        System.out.println(" 	+  , -  , /  , *  , log , sin , tan , cos , quit");
+		        System.out.println("-----------------------------------------------------");
 		        System.out.print("Operator : ");
 				a=sc.next();
 				if(a.equalsIgnoreCase("quit")) {
 					System.out.println("Caculator Closed");
-					 //this.mainMenu();
-					 
+					Activator activator = new Activator();
+					activator.showStart();
 				}
-				else if(a.equalsIgnoreCase("log")) {
+				else if(a.equals("log")) {
 					System.out.print("Number: ");
 			        double no1=sc.nextDouble();
 					calculatorDTO.setNo1(no1);
-			        System.out.println("Answer = " + iCalculatorService.log(calculatorDTO));
+					calculatorDTO.setCharacter("log");
+			        System.out.println("Answer = " + df.format(iCalculatorService.log(calculatorDTO)));
 			        
-				}else if(a.equalsIgnoreCase("cos")) {
+				}else if(a.equals("cos")) {
 					System.out.print("Number: ");
 			        double no1=sc.nextDouble();
 					calculatorDTO.setNo1(no1);
-			        System.out.println("Answer = " + iCalculatorService.cos(calculatorDTO));
+					calculatorDTO.setCharacter("cos");
+			        System.out.println("Answer = " + df.format(iCalculatorService.cos(calculatorDTO)));
 			        
-				}else if(a.equalsIgnoreCase("sin")) {
+				}else if(a.equals("sin")) {
 					System.out.print("Number: ");
 			        double no1=sc.nextDouble();
 					calculatorDTO.setNo1(no1);
-			        System.out.println("Answer = " + iCalculatorService.sin(calculatorDTO));
+					calculatorDTO.setCharacter("sin");
+			        System.out.println("Answer = " + df.format(iCalculatorService.sin(calculatorDTO)));
 			        
-				}else if(a.equalsIgnoreCase("tan")) {
+				}else if(a.equals("tan")) {
 					System.out.print("Number: ");
 			        double no1=sc.nextDouble();
 					calculatorDTO.setNo1(no1);
-			        System.out.println("Answer = " + iCalculatorService.tan(calculatorDTO));
+					calculatorDTO.setCharacter("tan");
+			        System.out.println("Answer = " + df.format(iCalculatorService.tan(calculatorDTO)));
 				}else{
 			        System.out.print("No 1: ");
 			        double no1 = sc.nextDouble();
@@ -73,13 +79,13 @@ public class FrontController {
 			        calculatorDTO.setNo2(no2);
 			        calculatorDTO.setCharacter(a);
 			        if(a.equals("+")) {
-			            System.out.println("Answer is : " + iCalculatorService.add(calculatorDTO));
+			            System.out.println("Answer is : " + df.format(iCalculatorService.add(calculatorDTO)));
 			        }else if(a.equals("-")) {
-			            System.out.println("Answer is : " + iCalculatorService.min(calculatorDTO));
+			            System.out.println("Answer is : " + df.format(iCalculatorService.min(calculatorDTO)));
 			        }else if(a.equals("/")) {
-			            System.out.println("Answer is : " + iCalculatorService.divide(calculatorDTO));
+			            System.out.println("Answer is : " + df.format(iCalculatorService.divide(calculatorDTO)));
 			        }else if(a.equals("*")) {
-			            System.out.println("Answer is : " + iCalculatorService.multi(calculatorDTO));
+			            System.out.println("Answer is : " + df.format(iCalculatorService.multi(calculatorDTO)));
 			        }
 				}
 	        }
@@ -114,7 +120,7 @@ public class FrontController {
 					setLengthAction(converterLengthService, converterLengthDTO, conType);
 				}else if(conType == 0) {
 					Activator activator = new Activator();
-					activator.displayConversionLengthSubmenu(converterLengthService);
+					activator.showStart();
 				}
 	}
 	
@@ -135,7 +141,7 @@ public class FrontController {
 					setMassAction(iConverterMassService, converterMassDTO, conType);
 				}else if(conType == 0) {
 					Activator activator = new Activator();
-					activator.displayConversionMassSubmenu(iConverterMassService);
+					activator.showStart();
 				}
 	}
 	
@@ -151,12 +157,12 @@ public class FrontController {
 				}else if(conType == 2) {
 					System.out.print("Enter temperature in Fahrenheight : ");
 					value = sc.nextDouble();
-					converterTemperatureDTO.setType(1);
+					converterTemperatureDTO.setType(2);
 					converterTemperatureDTO.setTemperature(value);
 					setTemperatureAction(converterTemperatureService, converterTemperatureDTO, conType);
 				}else if(conType == 0) {
 					Activator activator = new Activator();
-					activator.displayConversionTemperatureSubmenu(converterTemperatureService);
+					activator.showStart();
 				}
 	}
 	
@@ -171,44 +177,42 @@ public class FrontController {
 		}else if(conType == 2) {
 			System.out.print("Enter volume in Mili Liters : ");
 			value = sc.nextDouble();
-			convertVolumeDTO.setConTo(1);
+			convertVolumeDTO.setConTo(2);
 			convertVolumeDTO.setValueV(value);
 			setVolumeAction(convertVolumeService, convertVolumeDTO, conType);
 		}else if(conType == 3) {
 			System.out.print("Enter volume in Liters : ");
 			value = sc.nextDouble();
-			convertVolumeDTO.setConTo(1);
+			convertVolumeDTO.setConTo(3);
 			convertVolumeDTO.setValueV(value);
 			setVolumeAction(convertVolumeService, convertVolumeDTO, conType);
 		}else if(conType == 4) {
 			System.out.print("Enter volume in Galoon : ");
 			value = sc.nextDouble();
-			convertVolumeDTO.setConTo(1);
+			convertVolumeDTO.setConTo(4);
 			convertVolumeDTO.setValueV(value);
 			setVolumeAction(convertVolumeService, convertVolumeDTO, conType);
 		}else if(conType == 0) {
 			Activator activator = new Activator();
-			activator.displayConversionVoumeSubmenu(convertVolumeService);
+			activator.showStart();
 		}
 	}
 	
 	public void actionQuiz(int tool, QuizService quizService) {
-		int mode=0;
         
-        try{
-            mode=sc.nextInt();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
         Level l=null;
         
-        switch(mode){
+        switch(tool){
             case 1:
                 l=new EasyLevel();
                 break;
             case 2:
                 l=new HardLevel();
                 break;
+            case 0:
+            	Activator activator = new Activator();
+    			activator.showStart();
+    			break;
         }
     System.out.println("\n");
     l.runLevel();
@@ -217,13 +221,13 @@ public class FrontController {
 	
 	public void setLengthAction(ConverterLengthService converterLengthService, ConverterLengthDTO converterLengthDTO, int conType) {
 		if(1 == conType) {
-            System.out.println("Answer is : " + converterLengthService.KMToMiles(converterLengthDTO));
+            System.out.println("Answer is : " + df.format(converterLengthService.KMToMiles(converterLengthDTO)));
         }else if(2 == conType) {
-            System.out.println("Answer is : " + converterLengthService.MilesToKM(converterLengthDTO));
+            System.out.println("Answer is : " + df.format(converterLengthService.MilesToKM(converterLengthDTO)));
         }else if(3 == conType) {
-            System.out.println("Answer is : " + converterLengthService.FeetToMetres(converterLengthDTO));
+            System.out.println("Answer is : " + df.format(converterLengthService.FeetToMetres(converterLengthDTO)));
         }else if(4 == conType) {
-            System.out.println("Answer is : " + converterLengthService.MetresToFeet(converterLengthDTO));
+            System.out.println("Answer is : " + df.format(converterLengthService.MetresToFeet(converterLengthDTO)));
         }else if(conType == 0) {
         	actionConverterLength(1,converterLengthService);
         }
@@ -233,9 +237,9 @@ public class FrontController {
 	
 	public void setMassAction(IConverterMassService converterMassService, ConverterMassDTO converterMassDTO, int conType) {
 		if(1 == conType) {
-            System.out.println("Answer is : " + converterMassService.KgToPounds(converterMassDTO));
+            System.out.println("Answer is : " + df.format(converterMassService.KgToPounds(converterMassDTO)));
         }else if(2 == conType) {
-            System.out.println("Answer is : " + converterMassService.PoundsToKg(converterMassDTO));
+            System.out.println("Answer is : " + df.format(converterMassService.PoundsToKg(converterMassDTO)));
         }else if(conType == 0) {
         	actionConverterMass(2,converterMassService);
         }
@@ -245,9 +249,9 @@ public class FrontController {
 	
 	public void setTemperatureAction(ConverterTemperatureService converterTemperatureService, ConverterTemperatureDTO converterTemperatureDTO, int conType) {
 		if(1 == conType) {
-            System.out.println("Answer is : " + converterTemperatureService.CelciusToFahrenheit(converterTemperatureDTO));
+            System.out.println("Answer is : " + df.format(converterTemperatureService.CelciusToFahrenheit(converterTemperatureDTO)));
         }else if(2 == conType) {
-            System.out.println("Answer is : " + converterTemperatureService.FahrenheightToCelcius(converterTemperatureDTO));
+            System.out.println("Answer is : " + df.format(converterTemperatureService.FahrenheightToCelcius(converterTemperatureDTO)));
         }else if(conType == 0) {
         	actionConverterTemperature(3,converterTemperatureService);
         }
@@ -256,13 +260,13 @@ public class FrontController {
 	}
 	public void setVolumeAction(ConvertVolumeService convertVolumeService, ConvertVolumeDTO convertVolumeDTO, int conType) {
 		if(1 == conType) {
-            System.out.println("Answer is : " + convertVolumeService.LiterToMeliLiter(convertVolumeDTO));
+            System.out.println("Answer is : " + df.format(convertVolumeService.LiterToMeliLiter(convertVolumeDTO)));
         }else if(2 == conType) {
-            System.out.println("Answer is : " + convertVolumeService.MiliLiterToLiter(convertVolumeDTO));
+            System.out.println("Answer is : " + df.format(convertVolumeService.MiliLiterToLiter(convertVolumeDTO)));
         }else if(3 == conType) {
-            System.out.println("Answer is : " + convertVolumeService.LiterToGaloon(convertVolumeDTO));
+            System.out.println("Answer is : " + df.format(convertVolumeService.LiterToGaloon(convertVolumeDTO)));
         }else if(4 == conType) {
-            System.out.println("Answer is : " + convertVolumeService.GaloonToLiter(convertVolumeDTO));
+            System.out.println("Answer is : " + df.format(convertVolumeService.GaloonToLiter(convertVolumeDTO)));
         }else if(conType == 0) {
         	actionConverterVolume(4,convertVolumeService);
         }

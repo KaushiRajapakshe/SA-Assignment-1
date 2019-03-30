@@ -1,16 +1,24 @@
 package mathsapp;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.Scanner;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+import calculator.CalculatorImpl;
 import calculator.CalculatorService;
+import converterlength.ConverterLengthImpl;
 import converterlength.ConverterLengthService;
+import convertermass.ConverterMassImpl;
 import convertermass.IConverterMassService;
+import convertertemperature.ConverterTemperatureImpl;
 import convertertemperature.ConverterTemperatureService;
+import convertervolume.ConvertVolumeImpl;
 import convertervolume.ConvertVolumeService;
 import maths_quiz.QuizService;
+import maths_quiz.QuizServiceImpl;
 
 public class Activator implements BundleActivator {
 	
@@ -21,11 +29,10 @@ public class Activator implements BundleActivator {
 	ServiceReference<ConvertVolumeService> volume;
 	ServiceReference<QuizService> quiz;
 	
-	private static BundleContext context;
+	private static BundleContext bundleContext;
 	private int tool;
 	private int conTool;
 	private int conType;
-	BundleContext bundleContext;
 
 	Scanner sc =new Scanner(System.in);
 	
@@ -48,8 +55,18 @@ public class Activator implements BundleActivator {
         System.out.println("1) Calculator ");
         System.out.println("2) Converter");
         System.out.println("3) Random Maths Quiz Generator ");
+        System.out.println("0) Exit");
         tool=sc.nextInt();
         
+        Dictionary<String, String> props = new Hashtable<String, String>();
+        props.put("service.exported.interfaces", "*");
+        props.put("service.exported.configs", "ecf.generic.server");
+        bundleContext.registerService(CalculatorService.class, new CalculatorImpl(), props);
+        bundleContext.registerService(IConverterMassService.class, new ConverterMassImpl(), props);
+        bundleContext.registerService(ConverterLengthService.class, new ConverterLengthImpl(), props);
+        bundleContext.registerService(ConverterTemperatureService.class, new ConverterTemperatureImpl(), props);
+        bundleContext.registerService(ConvertVolumeService.class, new ConvertVolumeImpl(), props);
+        bundleContext.registerService(QuizService.class, new QuizServiceImpl(), props);
         calculator = bundleContext.getServiceReference(CalculatorService.class); 
         CalculatorService iCalculatorService = (CalculatorService) bundleContext.getService(calculator);
         mass = bundleContext.getServiceReference(IConverterMassService.class); 
@@ -92,6 +109,7 @@ public class Activator implements BundleActivator {
             System.out.println("\t|\t\t\t\t\t\t|");
             System.out.println("\t|\t\t  Easy mode : 1\t\t\t|");
             System.out.println("\t|\t\t  Hard mode : 2\t\t\t|");
+            System.out.println("\t|\t\t  Exit        0\t\t\t|");
             System.out.println("\t|\t\t\t\t\t\t|");
             System.out.println("\t -----------------------------------------------\n");
             System.out.print("Enter Your Mode :  ");
@@ -99,14 +117,14 @@ public class Activator implements BundleActivator {
         	FrontController frontController = new FrontController();
 	        frontController.actionQuiz(tool, quizService);
         	// ToDo : implement the actionQuiz 
+	    }else if(tool== 0) {
+	    	try {
+				stop(bundleContext);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
-        bundleContext.ungetService(calculator);
-		bundleContext.ungetService(length);
-		bundleContext.ungetService(mass);
-		bundleContext.ungetService(temperature);
-		bundleContext.ungetService(volume);
-		bundleContext.ungetService(quiz);
-		
 	}
 	
 	public int showConverter() {
